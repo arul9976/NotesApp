@@ -1,0 +1,160 @@
+.container_main {
+    position: absolute;
+    bottom: 10%;
+    list-style: none;
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    .navs {
+        width: clamp(280px, 90vw, 900px);
+        font-size: clamp(14px, 2vw, 2rem);
+        background: rgb(0, 119, 255);
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: clamp(14px, 1vw, 24px);
+        border-radius: 100px;
+        z-index: 1000;
+
+
+        .navitem,
+        .plus {
+            position: relative;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(50px, 10vw, 150px);
+            height: clamp(20px, 30px, 40px);
+            border-radius: 10px;
+            top: 0;
+
+            .icon,
+            .fil {
+                position: absolute;
+                left: 50%;
+                font-size: 1.2em;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                padding: 10px;
+                border-radius: 50%;
+                transition: 500ms;
+
+
+
+                .filters {
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .emo {
+                    position: absolute;
+                    left: calc(-50% - 70px);
+                    transform-origin: 100px;
+                    background: red;
+                    padding: 8px;
+                    border-radius: 50%;
+                    transition: 400ms;
+                    opacity: 0;
+                    transform: rotate(0) translateX(calc(50% + 60px));
+                    transition-delay: calc(0.1s * var(--clr));
+
+                    svg {
+                        transform: rotate(calc(135deg / -3 * calc(var(--clr))));
+                    }
+                }
+
+                .text {
+                    position: absolute;
+                    text-align: center;
+                    left: calc(-50% - 70px);
+                    top: -35px;
+                    transform-origin: 100px;
+                    font-size: 12px;
+                    transition: 400ms;
+                    opacity: 0;
+                    transform: rotate(calc(135deg / 3 * calc(var(--clr))));
+
+                    .aft {
+                        position: relative;
+
+                        b {
+                            position: absolute;
+                            text-align: center;
+                            width: 40px;
+                            height: 15px;
+                            top: -7px;
+                            left: 0;
+                            transform: rotate(calc(135deg / (-3) * calc(var(--clr))));
+
+                        }
+                    }
+
+                }
+            }
+
+            .fil {
+                padding: 0;
+                z-index: -1;
+                top: -20px;
+
+            }
+
+            .icon.icofil+.fil>.filters>.emo {
+                top: -20px;
+                opacity: 1;
+                transform: rotate(calc(135deg / 3 * (calc(var(--clr)))));
+
+
+            }
+
+            @media (min-width: 650px) {
+
+                .icon.icofil+.fil>.filters>.emo, .icon.icofil+.fil>.filters>.text {
+                    transform: rotate(calc(135deg / 3 * calc(1 + var(--clr))));
+
+                    svg,
+                    b {
+                        transform: rotate(calc(135deg / -3 * calc(1 + var(--clr))));
+                    }
+                }
+                .emo:hover + .text{
+                    opacity: 1;
+                }
+            }
+
+
+            .active {
+                background: rgb(255, 123, 0);
+                top: -20px;
+                z-index: 1000;
+            }
+
+            .navName {
+                display: none;
+                font-size: 18px;
+            }
+        }
+
+        .active .navName {
+            display: block;
+        }
+
+        .plus .icon svg {
+            transition: 500ms;
+            transform: rotate(180deg);
+        }
+
+        .plus .icon.active svg {
+            transition: 500ms;
+            transform: rotate(-135deg);
+        }
+    }
+}

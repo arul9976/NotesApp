@@ -1,0 +1,251 @@
+@import './Navbar.scss';
+$FontSize: 20px;
+
+// @include clamp('font-size', 12px, 3vw, 40px);
+.home {
+    color: $Black;
+    gap: 0.5rem;
+    width: min(100%, 2240px);
+    height: 100%;
+    display: flex;
+    margin: auto;
+    padding: 10px;
+
+    .BoxCon {
+        width: 100%;
+        height: 90%;
+        margin-top: auto;
+
+        grid-template-columns: repeat(3, minmax(30%, 1fr));
+        justify-content: center;
+        grid-gap: min(0.5rem, 1rem);
+        overflow: auto;
+
+        .BoxClr {
+            position: relative;
+            display: grid;
+            grid-template-rows: 25% 75%;
+            height: 100%;
+            padding: 7px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 500ms;
+            z-index: 100;
+
+        }
+
+        .Added::after, .Starter::after {
+            position: absolute;
+            content: '';
+            width: 50px;
+            top: 40%;
+            left: -50px;
+            background: var(--clr);
+            height: 100px;
+            border-radius: 50%;
+            z-index: -1;
+
+            animation: waveit 500ms;
+        }
+
+        @keyframes waveit {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(25);
+            }
+        }
+
+        .Deleted::after {
+            position: absolute;
+            content: '';
+            width: 50px;
+            top: 20%;
+            left: -50px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--clr);
+            z-index: -1;
+            animation: deleted 500ms;
+
+            @keyframes deleted {
+                0%{
+                    transform: scale(15);
+                }
+                100% {
+                    transform: scale(0);
+                }
+            }
+        }
+
+
+        .work {
+            background: #F56565;
+        }
+
+        .important {
+            background: #4299e1;
+        }
+
+        .personal {
+            background: #F6E05E;
+        }
+
+        .work:hover {
+            background: #db3636ba;
+
+            .MenuIco {
+                background: #F56565;
+            }
+        }
+
+
+
+        .important:hover {
+            background: #437cac;
+
+            .MenuIco {
+                background: #4299e1;
+            }
+        }
+
+
+
+        .personal:hover {
+            background: #f7d82dba;
+
+            .MenuIco {
+                background: #F6E05E;
+            }
+        }
+
+
+
+        .add {
+            grid-template-rows: 1fr;
+            place-items: center;
+            background: rgb(238, 205, 58);
+        }
+
+        .boxComp {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: 30px 1fr;
+        }
+
+        .headingTop {
+            position: relative;
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+
+            .heading {
+                display: grid;
+                place-items: center;
+                font-size: clamp(14px, 2vh, 40px);
+                font-weight: 700;
+                width: 70%;
+                overflow: hidden;
+            }
+
+            .MenuIco {
+                position: absolute;
+                top: clamp(1px, 0.5vw, 20px);
+                right: clamp(1px, 1px, 20px);
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                padding: 15px;
+                background: #F6E05E;
+
+                width: clamp(40px, 3vw, 60px);
+                height: clamp(40px, 3vw, 60px);
+                transition: 500ms;
+                cursor: pointer;
+            }
+
+            .work {
+                background: #fd5151;
+            }
+
+            .important {
+                background: #347db9;
+
+            }
+
+            .personal {
+                background: #d8bf34ba;
+
+            }
+
+            .active {
+                justify-content: space-between;
+                width: 150px;
+                border-radius: 40px;
+            }
+
+
+        }
+
+
+
+        .content {
+            font-size: clamp(14px, 1.5vw, 35px);
+            padding: 0 10px;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            font-weight: 500;
+            text-align: center;
+            overflow-y: auto;
+        }
+    }
+
+
+}
+
+@media (min-width: 1650px) {
+    // .home {
+    //     max-width: 90%;
+    // }
+}
+
+
+@media (max-width: 769px) {
+
+    .content {
+        line-height: 20px !important;
+    }
+}
+
+@media (max-width: 585px) {
+    .home {
+        align-items: center !important;
+    }
+
+    .BoxCon {
+        height: 90% !important;
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #3498db;
+    /* Color of the thumb */
+    border-radius: 10px;
+    /* Rounded corners of the thumb */
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Color of the track */
+}

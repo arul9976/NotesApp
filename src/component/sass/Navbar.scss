@@ -1,0 +1,55 @@
+@import '../../App.scss';
+
+.navbar {
+    color: $Black;
+    font-size: clamp(.5rem, 1.5vw, 5rem);
+
+    .Profile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .MenuBtn {
+        font-size: 1.5rem;
+    }
+
+    .navBarLi {
+        text-decoration: none;
+        list-style: none;
+        padding: 8px 20px;
+    }
+
+    .active {
+        border-radius: 10px;
+        background: rgb(207, 205, 205);
+    }
+}
+
+@media (min-width: 1650px) {
+    .isopen {
+        width: 100px !important;
+    }
+
+    .MenuBtn_top {
+        top: 20px !important;
+        right: 10px !important;
+    }
+
+    .MenuBtn {
+
+        font-size: 2.5em !important;
+    }
+}
+
+@media (max-width: 585px) {
+    .navbar {
+        display: none !important;
+        width: 90% !important;
+        position: absolute !important;
+    }
+
+    .isopen {
+        width: 70px !important;
+        background: transparent !important;
+    }
+}

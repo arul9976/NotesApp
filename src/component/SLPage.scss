@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans:wght@500&family=PT+Sans&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+:root {
+    --text: #{textvalue};
+
+}
+
+.l_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(280px, 50vw, 60vw);
+    height: 350px;
+    background: rgb(4, 102, 250);
+    border-radius: 14px;
+    transition: 500ms;
+    box-shadow: 4px 4px 4px #1c4259;
+    overflow: hidden;
+
+    .login,
+    .SignUp {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px;
+        overflow: hidden;
+        transition: 500ms;
+
+        >* {
+            margin: 10px 0;
+        }
+
+        .inputgrp {
+            position: relative;
+            width: 100%;
+
+            label {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                font-family: cursive;
+                height: 25px;
+                width: min-content;
+                letter-spacing: 2px;
+                font-weight: 400;
+                overflow: hidden;
+
+            }
+
+            label.active {
+                color: red;
+            }
+
+
+            .error {
+                position: absolute;
+                font-size: 12px;
+                color: red;
+                margin: 0 8px;
+
+
+            }
+
+            .error.NotFound {
+                margin: auto;
+            }
+
+            .redline {
+                color: red;
+                border-bottom: 2px solid red;
+
+                &:focus {
+                    border-bottom: 2px solid red;
+
+                    &~svg {
+                        color: red;
+                    }
+                }
+
+                &~svg {
+                    color: red;
+                }
+            }
+        }
+
+        .input {
+            position: relative;
+            padding: 10px 5px;
+            width: 100%;
+            background: transparent;
+            border-bottom: 2px solid #626263;
+            line-height: 20px;
+            outline: none;
+            font-family: cursive;
+            transition: 400ms;
+
+            &:focus {
+                border-bottom: 2px solid limegreen;
+
+                &+label {
+                    transform: translate(-5px, -25px);
+                    transition: 400ms;
+                }
+
+                &~svg {
+                    color: limegreen;
+                }
+            }
+        }
+
+        .labelisvalue {
+            transform: translate(-5px, -25px);
+            transition: 400ms;
+        }
+
+
+        svg {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+        }
+
+
+        button {
+            position: relative;
+            background: rgb(0, 241, 60);
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-weight: bolder;
+            width: 100%;
+            overflow: hidden;
+            transition: 1000ms;
+        }
+
+
+
+        b {
+            padding: 10px;
+            text-align: center;
+            background: transparent;
+            text-decoration: underline;
+            width: 100px;
+            cursor: pointer;
+        }
+
+    }
+
+    .login.active {
+        transform: translate(300px, 0px) scale(0);
+    }
+
+    .SignUp.active {
+        transform: translate(-300px, 0px) scale(0);
+    }
+}
+
+.l_container.isLogin {
+    height: 300px;
+}
