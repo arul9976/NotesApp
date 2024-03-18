@@ -3,16 +3,18 @@ import { SendFill } from 'react-bootstrap-icons'
 import './NavbarComp.scss'
 import { useState } from 'react'
 import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
-import { FetchData } from '../Redux/Actions'
+import { FetchData, addData } from '../Redux/Actions'
 import { useDispatch } from 'react-redux'
-const NavbarComp = (isActive, index) => {
+const NavbarComp = (isActive) => {
     const dispatch = useDispatch();
+
     const [Data, setData] = useState({
         username: '',
         heading: '',
         content: '',
         radio: ''
     })
+
     const [isClicked, setIsClicked] = useState(false)
 
     const handleChange = (e) => {
@@ -28,7 +30,8 @@ const NavbarComp = (isActive, index) => {
         setTimeout(() => {
             setIsClicked(false)
         }, 1000);
-        dispatch(FetchData({ FetchMethod: 'userDataAdd', isCretencials: Data }))
+        dispatch(addData(Data))
+        dispatch(FetchData({ FetchMethod: "userDataAdd", isCretencials: Data }))
         setData({
             username: '',
             heading: '',

@@ -136,9 +136,47 @@
             padding: 8px 18px;
             border-radius: 10px;
             font-weight: bolder;
+            height: 40px;
             width: 100%;
             overflow: hidden;
             transition: 1000ms;
+
+            b {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+            }
+        }
+
+        .Loading {
+            &::after {
+                position: absolute;
+                content: "Loading...";
+                width: 50px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgb(46, 215, 36);
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+                border-radius: 110px;
+                animation: trans 1.2s infinite;
+
+                @keyframes trans {
+                    0% {
+                        width: 50px;
+                    }
+
+                    100% {
+                        width: calc(100% + 20px);
+                    }
+                }
+            }
         }
 
 
@@ -162,6 +200,29 @@
         transform: translate(-300px, 0px) scale(0);
     }
 }
+
+// .Loading::after {
+//     position: absolute;
+//     content: "";
+//     width: 50px;
+//     top: 40%;
+//     left: -20%;
+//     background: rgb(4, 102, 250);
+//     height: 100px;
+//     border-radius: 100%;
+//     animation: trans 1s;
+
+//     // @keyframes trans {
+//     //     0% {
+//     //         transform: scale(0);
+
+//     //     }
+
+//     //     100% {
+//     //         transform: scale(25);
+//     //     }
+//     // }
+// }
 
 .l_container.isLogin {
     height: 300px;

@@ -3,23 +3,28 @@ import { createSlice } from '@reduxjs/toolkit';
 const notesSlice = createSlice({
   name: 'notes',
   initialState: {
-    data: [],
+    isLogged: false,
     trail: [],
     loading: null
   },
   reducers: {
     fetchedData: (state, action) => {
       state.trail = []
+      state.isLogged = true;
       action.payload.data.forEach(item => {
         state.trail = [item, ...state.trail]
       })
-
     },
     addNote: (state, action) => {
-      state.data = [action.payload, ...state.data]
+      state.trail.forEach(item => {
+        if(item.heading === action.payload.heading){
+          item.id = action.payload.id
+        }
+      })
     },
     addData: (state, action) => {
       state.trail.push(action.payload)
+      
     },
     updateNote: (state, action) => {
       const { id, content } = action.payload;
@@ -34,6 +39,7 @@ const notesSlice = createSlice({
 
     loggedOut: (state, action) => {
       state.trail = action.payload
+      state.isLogged = false;
     }
   }
 });

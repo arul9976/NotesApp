@@ -7,19 +7,20 @@ import NavbarMain from './component/NavbarMain';
 import SLPage from './component/SLPage';
 import About from './component/About';
 import Home from './component/Home';
+import { ReduxData } from './component/Fetch';
 function App() {
-
+  const { isLogged } = ReduxData();
   return (
     <ChakraProvider>
 
       <div className='App'>
         <NavbarMain />
         <Routes>
-           <Route path='/' exact Component={SLPage} />
-          <Route path='/About' Component={About} />
-          <Route path='/Work' Component={Home} />
-          <Route path='/Personal' Component={Home} />
-          <Route path='/Important' Component={Home} />
+          <Route path='Notesapp/' exact Component={isLogged ? Home : SLPage} />
+          <Route path='NotesApp/About' Component={About} />
+          <Route path='NotesApp/Work' Component={Home} />
+          <Route path='NotesApp/Personal' Component={Home} />
+          <Route path='NotesApp/Important' Component={Home} />
 
         </Routes>
       </div>

@@ -36,8 +36,8 @@ export const FormErrorState = () => {
 
 export const ReduxData = () => {
     const DataNotes = useSelector(selectNotes)
-    const { trail } = DataNotes
-    return trail;
+    const { trail, isLogged } = DataNotes
+    return { trail, isLogged };
 }
 
 export const WindowWD = () => {

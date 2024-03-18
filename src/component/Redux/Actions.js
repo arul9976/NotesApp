@@ -33,18 +33,17 @@ export const removeNote = createAction('notes/removeNote');
 
 export const FetchData = ({ FetchMethod, isCretencials, setisCretencials }) => {
     const errors = {
-        username: isCretencials.username,
-        email: isCretencials.email,
-        password: isCretencials.password,
+        username: isCretencials.username || "",
+        email: isCretencials.email || "",
+        password: isCretencials.password || "",
         msgError: null,
-        isLogged: false,
-        isLogin: true
     }
     return async (dispatch) => {
         if (FetchMethod === 'userDataAdd') {
             await axios.post(`https://notes-app-p1-850e8af108bc.herokuapp.com/${FetchMethod}`, isCretencials)
                 .then((response) => {
-                    dispatch(addData(response.data))
+                    dispatch(addNote(response.data))
+                    console.log(response);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -56,7 +55,6 @@ export const FetchData = ({ FetchMethod, isCretencials, setisCretencials }) => {
                     if (res.status === 200) {
                         if (FetchMethod === 'isUser' || FetchMethod === "SignUser") {
                             errors.msgError = 'success'
-                            errors.isLogged = true;
                             setisCretencials(errors)
                             localStorage.setItem("Token", res.data)
                             localStorage.setItem('un', isCretencials.username)
@@ -71,10 +69,7 @@ export const FetchData = ({ FetchMethod, isCretencials, setisCretencials }) => {
                                 .then(response => {
                                     dispatch(fetchedData(response.data))
                                 })
-                            errors.username = res.data.username
-                            errors.isLogged = true;
                             setisCretencials(errors)
-
                         }
 
 
@@ -89,6 +84,12 @@ export const FetchData = ({ FetchMethod, isCretencials, setisCretencials }) => {
                             setisCretencials(errors)
                         }
 
+                    }
+                    else if (FetchMethod === "validateToken") {
+                        errors.msgError = "Token Expired or Invalid"
+                        setisCretencials(errors)
+                        localStorage.removeItem("Token")
+                        localStorage.removeItem("un")
                     }
                 }).catch(err => {
                     console.log(err);

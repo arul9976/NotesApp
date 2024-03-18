@@ -8,7 +8,7 @@ import Nav from './HomeComp/Nav'
 import { ReduxData, WindowWD } from './Fetch'
 import { useLocation } from 'react-router-dom'
 const Home = () => {
-    const trail = ReduxData();
+    const { trail } = ReduxData();
     const WindowWidth = WindowWD();
     const location = useLocation();
     if (trail) {
@@ -21,14 +21,13 @@ const Home = () => {
                             trail.length > 0 ?
 
                                 trail.map((Item, index) => {
-                                    if (location.pathname === '/Work' || location.pathname === '/Personal' || location.pathname === '/Important') {
-                                        const type = location.pathname.substring(1).toLowerCase();
+                                    if (location.pathname === '/NotesApp/Work' || location.pathname === '/NotesApp/Personal' || location.pathname === '/NotesApp/Important') {
+                                        const type = location.pathname.substring(10).toLowerCase();
                                         return (
                                             Item.radio === type && (
                                                 <div key={index}>
                                                     <BoxComp radio={Item.radio} heading={Item.heading} content={Item.content}
-                                                        id={Item.id} index={index}
-                                                        Added={trail.length} code={Item.username} />
+                                                        id={Item.id} index={index} code={Item.username} />
                                                 </div>
                                             )
                                         )
@@ -37,8 +36,7 @@ const Home = () => {
                                         return (
                                             <div key={index}>
                                                 <BoxComp radio={Item.radio} heading={Item.heading} content={Item.content}
-                                                    id={Item.id} index={index}
-                                                    Added={trail.length} code={Item.username} />
+                                                    id={Item.id} index={index} code={Item.username} />
                                             </div>
                                         )
                                     }

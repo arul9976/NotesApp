@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const About = () => {
   const name = localStorage.getItem('un')
-  const trail = ReduxData();
+  const { trail } = ReduxData();
 
 
   const cal = (field) => {
@@ -85,7 +85,7 @@ const About = () => {
                         Log-Out
                       </Button>
                       :
-                      <Link to={'/'}>
+                      <Link to={'/NotesApp'}>
                         <Button colorScheme='blue'>
                           Log-In
                         </Button>

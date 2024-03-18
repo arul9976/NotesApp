@@ -8,8 +8,7 @@ import { useDispatch } from 'react-redux'
 import { removeNote } from '../Redux/Store'
 
 
-const BoxComp = ({code, radio, heading, content, id, index, Added }) => {
-
+const BoxComp = ({ code, radio, heading, content, id, index }) => {
     const dispatch = useDispatch();
 
     const [Starter, setStater] = useState(true)
@@ -58,7 +57,7 @@ const BoxComp = ({code, radio, heading, content, id, index, Added }) => {
         }, 600);
         return (
             <div style={ClrSet(radio)}
-                className={`BoxClr ${Deleted === index && 'Deleted'} ${radio} ${Added === index ? 'Added' : ''} ${Starter && 'Starter'}`} key={index}>
+                className={`BoxClr ${radio} ${Deleted === index && 'Deleted'} ${Starter && 'Starter'}`} key={index}>
 
                 <div className={'headingTop'} >
                     <Heading className='heading' margin={'0 10px'}>{UpperText(heading)}</Heading>

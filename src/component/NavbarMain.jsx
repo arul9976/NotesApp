@@ -9,7 +9,7 @@ const NavbarMain = () => {
     const location = useLocation();
     const navs = [<HouseFill />, <PersonFill />, <PlusLg />, <Whatsapp />, <Box2HeartFill />]
     const navnames = ['Home', 'About', 'Plus', 'Contact', 'Filter']
-    const Linking = ['/', '/About', '', '/Contact', `${location.pathname}`]
+    const Linking = ['/', '/About', '', '/Contact', `${location.pathname.substring(9)}`]
     const [isActive, setIsActive] = useState(0)
     const [togg, setTogg] = useState(false)
     const [toggle, setToggle] = useState(false)
@@ -33,13 +33,14 @@ const NavbarMain = () => {
         }
     }
     useEffect(() => {
-        for (let index = 0; index < Linking.length; index++) {
-            if (Linking[index] === location.pathname && isActive !== 2 && isActive !== 4) {
+        const linked = ['/NotesApp', '/NotesApp/About', '', '/Notesapp/Contact', `/NotesApp/Filter`]
+        for (let index = 0; index < linked.length; index++) {
+            if (linked[index] === location.pathname && isActive !== 2 && isActive !== 4) {
                 setIsActive(index)
                 break;
             }
         }
-    }, [Linking, location.pathname, isActive])
+    }, [location.pathname, isActive])
 
     return (
         <>
@@ -50,7 +51,7 @@ const NavbarMain = () => {
                             return (
                                 <>
                                     <li key={index} onClick={() => activeNav(index)} className={`${Item !== 'Plus' ? "navitem" : "plus"} ${isActive === index && "active"}`}>
-                                        <Link to={index !== 2 && Linking[index]}>
+                                        <Link to={index !== 2 && `NotesApp${Linking[index]}`}>
                                             <div onClick={() => inpTogg(index)}
                                                 className={`icon ${(index === 4 && toggle && isActive === 4) && 'icofil'} ${isActive === index && !(index === 2 && !togg) && "active"} ${(index === 2 && togg) && 'togg'}`}>
 
@@ -61,7 +62,7 @@ const NavbarMain = () => {
                                                 <div className="fil">
                                                     <div className="filters">
                                                         <div onClick={() => inpTogg(null)} style={{ '--clr': 0 }} className='emo'>
-                                                            <Link to={'/Work'} className='hiii'>
+                                                            <Link to={'/NotesApp/Work'} className='hiii'>
                                                                 <Check />
                                                             </Link>
                                                         </div>
@@ -72,7 +73,7 @@ const NavbarMain = () => {
                                                         </div>
 
                                                         <div onClick={() => inpTogg(null)} style={{ '--clr': 1 }} className='emo'>
-                                                            <Link to={'/Important'}>
+                                                            <Link to={'/NotesApp/Important'}>
                                                                 <At />
                                                             </Link>
                                                         </div>
@@ -84,7 +85,7 @@ const NavbarMain = () => {
                                                         </div>
 
                                                         <div onClick={() => inpTogg(null)} style={{ '--clr': 2 }} className='emo'>
-                                                            <Link to={'/Personal'}>
+                                                            <Link to={'/NotesApp/Personal'}>
                                                                 <Peace />
                                                             </Link>
                                                         </div>
