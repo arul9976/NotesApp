@@ -34,7 +34,8 @@ $FontSize: 20px;
 
         }
 
-        .Added::after, .Starter::after {
+        .Added::after,
+        .Starter::after {
             position: absolute;
             content: '';
             width: 50px;
@@ -71,9 +72,10 @@ $FontSize: 20px;
             animation: deleted 500ms;
 
             @keyframes deleted {
-                0%{
+                0% {
                     transform: scale(15);
                 }
+
                 100% {
                     transform: scale(0);
                 }
@@ -204,14 +206,16 @@ $FontSize: 20px;
         }
     }
 
+    @media (min-width: 1250px) {
+        .BoxCon {
+            grid-template-columns: repeat(4, minmax(24%, 1fr)) !important;
+        }
+
+    }
 
 }
 
-@media (min-width: 1650px) {
-    // .home {
-    //     max-width: 90%;
-    // }
-}
+
 
 
 @media (max-width: 769px) {

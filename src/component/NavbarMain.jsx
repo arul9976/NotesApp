@@ -33,7 +33,7 @@ const NavbarMain = () => {
         }
     }
     useEffect(() => {
-        const linked = ['/NotesApp', '/NotesApp/About', '', '/Notesapp/Contact', `/NotesApp/Filter`]
+        const linked = ['/NotesApp', '/NotesApp/About', '', '/NotesApp/Contact', `/NotesApp/Filter`]
         for (let index = 0; index < linked.length; index++) {
             if (linked[index] === location.pathname && isActive !== 2 && isActive !== 4) {
                 setIsActive(index)

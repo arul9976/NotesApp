@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 import { selectNotes } from './Redux/Store'
+import axios from 'axios';
 
 const navs = ["Home", "About", "Skills", "Contact"]
 const Filters = ['Work', 'Personal', 'Important']
@@ -55,4 +56,24 @@ export const WindowWD = () => {
     }, [windowWidth])
 
     return windowWidth;
+}
+
+export const DeleteData = async (id, code) => {
+    try {
+        await axios.delete(`https://notes-app-p1-850e8af108bc.herokuapp.com/userData/RemoveData/${code}/${id}`)
+    }
+    catch {
+        console.log('errr deletion');
+    }
+}
+
+
+export const UpdateData = async (data) => {
+    try {
+        await axios.put(`http://localhost:8080/userData/UpdateUserData`, data)
+        console.log('success');
+    }
+    catch {
+        console.log('errr updation',data);
+    }
 }

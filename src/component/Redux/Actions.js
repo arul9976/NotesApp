@@ -32,47 +32,38 @@ export const loggedOut = createAction('notes/loggedOut', (data) => ({
 export const removeNote = createAction('notes/removeNote');
 
 export const FetchData = ({ FetchMethod, isCretencials, setisCretencials }) => {
-    const errors = {
-        username: isCretencials.username || "",
-        email: isCretencials.email || "",
-        password: isCretencials.password || "",
-        msgError: null,
-    }
     return async (dispatch) => {
         if (FetchMethod === 'userDataAdd') {
             await axios.post(`https://notes-app-p1-850e8af108bc.herokuapp.com/${FetchMethod}`, isCretencials)
                 .then((response) => {
                     dispatch(addNote(response.data))
-                    console.log(response);
                 })
                 .catch((err) => {
                     console.log(err);
                 })
         }
         else {
+            const errors = {
+                username: isCretencials.username || "",
+                email: isCretencials.email || "",
+                password: isCretencials.password || "",
+                msgError: null,
+            }
             await axios.post(`https://notes-app-p1-850e8af108bc.herokuapp.com/api/${FetchMethod}`, isCretencials)
                 .then(res => {
                     if (res.status === 200) {
+                        setisCretencials(errors)
                         if (FetchMethod === 'isUser' || FetchMethod === "SignUser") {
-                            errors.msgError = 'success'
-                            setisCretencials(errors)
                             localStorage.setItem("Token", res.data)
-                            localStorage.setItem('un', isCretencials.username)
-                            axios.get(`https://notes-app-p1-850e8af108bc.herokuapp.com/userDataList/${isCretencials.username}`)
-                                .then(response => {
-                                    dispatch(fetchedData(response.data))
-                                })
                         }
-                        else if (FetchMethod === 'validateToken') {
-                            localStorage.setItem('un', res.data.username)
-                            axios.get(`https://notes-app-p1-850e8af108bc.herokuapp.com/userDataList/${res.data.username}`)
-                                .then(response => {
-                                    dispatch(fetchedData(response.data))
-                                })
-                            setisCretencials(errors)
-                        }
-
-
+                        localStorage.setItem('un', FetchMethod === 'validateToken' ? res.data.username : isCretencials.username)
+                        axios.get(`https://notes-app-p1-850e8af108bc.herokuapp.com/userDataList/${FetchMethod === 'validateToken' ? res.data.username : isCretencials.username}`)
+                            .then((response) => {
+                                dispatch(fetchedData(response.data))
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            })
                     }
                     else if (FetchMethod === 'isUser') {
                         if (res.data === "Incorrect Password") {
@@ -92,10 +83,11 @@ export const FetchData = ({ FetchMethod, isCretencials, setisCretencials }) => {
                         localStorage.removeItem("un")
                     }
                 }).catch(err => {
-                    console.log(err);
+                    console.log('error ---', err);
+                    setisCretencials(errors)
+                    dispatch(fetchedData([{ id: 1, username: 'Arulkumar', heading: 'fwefw ', content: 'erfrf gtg4g 45g45g ', radio: 'work' }, { id: 2, username: 'Arulkumar', heading: 'rtgtrg ', content: 'erfrf grtgrtg grtgrtgrtgrtg ', radio: 'personal' }]))
                 })
         }
-
     }
 
 

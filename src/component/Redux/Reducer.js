@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { UpdateData } from '../Fetch';
 
 const notesSlice = createSlice({
   name: 'notes',
@@ -17,21 +18,26 @@ const notesSlice = createSlice({
     },
     addNote: (state, action) => {
       state.trail.forEach(item => {
-        if(item.heading === action.payload.heading){
+        if (item.heading === action.payload.heading) {
           item.id = action.payload.id
         }
       })
     },
     addData: (state, action) => {
       state.trail.push(action.payload)
-      
+
     },
     updateNote: (state, action) => {
-      const { id, content } = action.payload;
-      const note = state.find(note => note.id === id);
-      if (note) {
-        note.content = content;
-      }
+      const { id, data } = action.payload;
+      state.trail.forEach(item => {
+        if (item.id === id) {
+          item.heading = data.heading
+          item.content = data.content
+          UpdateData(data)
+          console.log('Updated');
+
+        }
+      })
     },
     removeNote: (state, action) => {
       state.trail = state.trail.filter(note => note.id !== action.payload)

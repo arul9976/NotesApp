@@ -16,7 +16,7 @@ const Home = () => {
             <>
                 <Nav />
                 <div className="home">
-                    <Grid gridTemplateRows={`repeat(${Math.floor(trail.length / (WindowWidth < 668 ? 2 : 3) + 1)}, ${WindowWidth < 668 ? 50 : 49}%)`} className='BoxCon'>
+                    <Grid gridTemplateRows={`repeat(${Math.floor(trail.length / (WindowWidth < 668 ? 2 : 3) + 1)}, ${WindowWidth < 668 ? 49 : 49}%)`} className='BoxCon'>
                         {
                             trail.length > 0 ?
 
