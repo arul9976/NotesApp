@@ -58,7 +58,6 @@
                     position: absolute;
                     left: calc(-50% - 70px);
                     transform-origin: 100px;
-                    background: red;
                     padding: 8px;
                     border-radius: 50%;
                     transition: 400ms;
@@ -69,6 +68,18 @@
                     svg {
                         transform: rotate(calc(135deg / -3 * calc(var(--clr))));
                     }
+                }
+
+                .work {
+                    background: #f73c3c;
+                }
+
+                .per {
+                    background: #ebcd22;
+                }
+
+                .imp {
+                    background: #1392fa;
                 }
 
                 .text {
@@ -117,7 +128,8 @@
 
             @media (min-width: 650px) {
 
-                .icon.icofil+.fil>.filters>.emo, .icon.icofil+.fil>.filters>.text {
+                .icon.icofil+.fil>.filters>.emo,
+                .icon.icofil+.fil>.filters>.text {
                     transform: rotate(calc(135deg / 3 * calc(1 + var(--clr))));
 
                     svg,
@@ -125,7 +137,8 @@
                         transform: rotate(calc(135deg / -3 * calc(1 + var(--clr))));
                     }
                 }
-                .emo:hover + .text{
+
+                .emo:hover+.text {
                     opacity: 1;
                 }
             }

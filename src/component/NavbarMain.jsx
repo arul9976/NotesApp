@@ -61,7 +61,7 @@ const NavbarMain = () => {
                                             {index === 4 && (
                                                 <div className="fil">
                                                     <div className="filters">
-                                                        <div onClick={() => inpTogg(null)} style={{ '--clr': 0 }} className='emo'>
+                                                        <div onClick={() => inpTogg(null)} style={{ '--clr': 0 }} className='emo work'>
                                                             <Link to={'/NotesApp/Work'} className='hiii'>
                                                                 <Check />
                                                             </Link>
@@ -72,7 +72,7 @@ const NavbarMain = () => {
                                                             </div>
                                                         </div>
 
-                                                        <div onClick={() => inpTogg(null)} style={{ '--clr': 1 }} className='emo'>
+                                                        <div onClick={() => inpTogg(null)} style={{ '--clr': 1 }} className='emo imp'>
                                                             <Link to={'/NotesApp/Important'}>
                                                                 <At />
                                                             </Link>
@@ -84,7 +84,7 @@ const NavbarMain = () => {
                                                             </div>
                                                         </div>
 
-                                                        <div onClick={() => inpTogg(null)} style={{ '--clr': 2 }} className='emo'>
+                                                        <div onClick={() => inpTogg(null)} style={{ '--clr': 2 }} className='emo per'>
                                                             <Link to={'/NotesApp/Personal'}>
                                                                 <Peace />
                                                             </Link>
