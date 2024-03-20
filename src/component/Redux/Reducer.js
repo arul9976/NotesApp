@@ -19,7 +19,7 @@ const notesSlice = createSlice({
     addNote: (state, action) => {
       state.trail.forEach(item => {
         if (item.heading === action.payload.heading) {
-          item.id = action.payload.id
+          item.id = action.payload.id;
         }
       })
     },
@@ -31,11 +31,10 @@ const notesSlice = createSlice({
       const { id, data } = action.payload;
       state.trail.forEach(item => {
         if (item.id === id) {
-          item.heading = data.heading
-          item.content = data.content
-          UpdateData(data)
-          console.log('Updated');
-
+          item.heading = data.heading;
+          item.content = data.content;
+          data.id = id;
+          UpdateData(data);
         }
       })
     },

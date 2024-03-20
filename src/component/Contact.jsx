@@ -33,7 +33,7 @@ const Contact = () => {
     }, [windowWd])
     return (
         <>
-            <Grid className={winsize > 650 ? 'Mob' : 'Desk'} width={'100%'}>
+            <Grid className={winsize < 650 ? 'Mob' : 'Desk'} width={'100%'}>
                 <Grid padding={'10px 12px'} placeItems={'center'} color={'#000'}>
                     <FormControl display={'flex'} flexDirection={'column'} bg={'#1c5d4b'} gap={5} padding={10} borderRadius={10}>
                         <Input type='text' name='Name' placeholder='Name' />

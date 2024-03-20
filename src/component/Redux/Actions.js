@@ -1,6 +1,7 @@
 // actions.js
 import { createAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { apiUrl } from '../Fetch';
 
 // Action to add a new note
 export const fetchedData = createAction('notes/fetchedData', (data) => ({
@@ -34,7 +35,7 @@ export const removeNote = createAction('notes/removeNote');
 export const FetchData = ({ FetchMethod, isCretencials, setisCretencials }) => {
     return async (dispatch) => {
         if (FetchMethod === 'userDataAdd') {
-            await axios.post(`https://notes-app-p1-850e8af108bc.herokuapp.com/${FetchMethod}`, isCretencials)
+            await axios.post(`${apiUrl}/${FetchMethod}`, isCretencials)
                 .then((response) => {
                     dispatch(addNote(response.data))
                 })
@@ -49,7 +50,7 @@ export const FetchData = ({ FetchMethod, isCretencials, setisCretencials }) => {
                 password: isCretencials.password || "",
                 msgError: null,
             }
-            await axios.post(`https://notes-app-p1-850e8af108bc.herokuapp.com/api/${FetchMethod}`, isCretencials)
+            await axios.post(`${apiUrl}/api/${FetchMethod}`, isCretencials)
                 .then(res => {
                     if (res.status === 200) {
                         setisCretencials(errors)
@@ -57,7 +58,7 @@ export const FetchData = ({ FetchMethod, isCretencials, setisCretencials }) => {
                             localStorage.setItem("Token", res.data)
                         }
                         localStorage.setItem('un', FetchMethod === 'validateToken' ? res.data.username : isCretencials.username)
-                        axios.get(`https://notes-app-p1-850e8af108bc.herokuapp.com/userDataList/${FetchMethod === 'validateToken' ? res.data.username : isCretencials.username}`)
+                        axios.get(`${apiUrl}/userDataList/${FetchMethod === 'validateToken' ? res.data.username : isCretencials.username}`)
                             .then((response) => {
                                 dispatch(fetchedData(response.data))
                             })
