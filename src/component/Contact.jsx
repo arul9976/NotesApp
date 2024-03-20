@@ -42,7 +42,7 @@ const Contact = () => {
                         <Button onClick={sendfb} type='submit' colorScheme='whatsapp'>Send FeedBack</Button>
                     </FormControl>
                 </Grid>
-                <Grid width={'100%'} gridTemplateColumns={`repeat(${winsize < 650 ? 2 : 3}, 1fr)`} height={'70%'}>
+                <Grid width={'100%'} gridTemplateColumns={`repeat(${winsize < 650 ? 2 : 3}, 1fr)`} height={winsize < 650 && '70%'}>
                     {
                         Icons.map((item, index) => {
                             return (
