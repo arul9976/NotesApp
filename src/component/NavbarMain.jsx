@@ -49,7 +49,6 @@ const NavbarMain = () => {
                     {
                         navnames.map((Item, index) => {
                             return (
-                                <>
                                     <li key={index} onClick={() => activeNav(index)} className={`${Item !== 'Plus' ? "navitem" : "plus"} ${isActive === index && "active"}`}>
                                         <Link to={index !== 2 && `NotesApp${Linking[index]}`}>
                                             <div onClick={() => inpTogg(index)}
@@ -102,8 +101,6 @@ const NavbarMain = () => {
                                             {Item !== 'Plus' && <b className='navName'> {Item}</b>}
                                         </Link>
                                     </li >
-
-                                </>
                             )
                         })
                     }
