@@ -85,7 +85,7 @@ const About = () => {
                         Log-Out
                       </Button>
                       :
-                      <Link to={'/NotesApp'}>
+                      <Link to={'/'}>
                         <Button colorScheme='blue'>
                           Log-In
                         </Button>

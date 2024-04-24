@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
 import { FetchData, addData } from '../Redux/Actions'
 import { useDispatch } from 'react-redux'
-const NavbarComp = (isActive) => {
+const NavbarComp = (isActive, setTogg) => {
     const dispatch = useDispatch();
 
     const [Data, setData] = useState({
@@ -26,6 +26,7 @@ const NavbarComp = (isActive) => {
 
     }
     const handleSubmit = () => {
+        setTogg(false);
         setIsClicked(!isClicked)
         setTimeout(() => {
             setIsClicked(false)

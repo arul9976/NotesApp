@@ -17,12 +17,12 @@ function App() {
       <div className='App'>
         <NavbarMain />
         <Routes>
-          <Route path='Notesapp/' exact Component={isLogged ? Home : SLPage} />
-          <Route path='NotesApp/About' Component={About} />
-          <Route path='NotesApp/Contact' Component={Contact} />
-          <Route path='NotesApp/Work' Component={Home} />
-          <Route path='NotesApp/Personal' Component={Home} />
-          <Route path='NotesApp/Important' Component={Home} />
+          <Route path='/' exact Component={isLogged ? Home : SLPage} />
+          <Route path='/About' Component={About} />
+          <Route path='/Contact' Component={Contact} />
+          <Route path='/Work' Component={Home} />
+          <Route path='/Personal' Component={Home} />
+          <Route path='/Important' Component={Home} />
 
         </Routes>
       </div>

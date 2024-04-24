@@ -46,7 +46,7 @@ const Contact = () => {
                     {
                         Icons.map((item, index) => {
                             return (
-                                <Flex alignItems={'center'} justifyContent={'center'} className={index === 1 && 'centering'}>
+                                <Flex key={index} alignItems={'center'} justifyContent={'center'} className={index === 1 && 'centering'}>
                                     <Link target={'_blank'} gap={3} href={Types[index].link} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
                                         <Text padding={'10px'} fontSize={'2.5rem'} borderRadius={'50%'} background={'blue.500'}>
                                             {item}

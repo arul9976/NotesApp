@@ -21,8 +21,8 @@ const Home = () => {
                             trail.length > 0 ?
 
                                 trail.map((Item, index) => {
-                                    if (location.pathname === '/NotesApp/Work' || location.pathname === '/NotesApp/Personal' || location.pathname === '/NotesApp/Important') {
-                                        const type = location.pathname.substring(10).toLowerCase();
+                                    if (location.pathname === '/Work' || location.pathname === '/Personal' || location.pathname === '/Important') {
+                                        const type = location.pathname.substring(1).toLowerCase();
                                         return (
                                             Item.radio === type && (
                                                 <div key={index}>
